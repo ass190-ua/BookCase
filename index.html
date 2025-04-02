@@ -408,7 +408,16 @@
     <script>
         const sound = document.getElementById("bookSound");
         const playButton = document.getElementById("playButton");
-      
+
+        // 🌙 Cambiar tema
+        function toggleTheme() {
+          const body = document.body;
+          body.classList.toggle('dark-mode');
+          const isDark = body.classList.contains('dark-mode');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+          document.getElementById('themeToggle').textContent = isDark ? '🌞' : '🌙';
+        }
+        
         function tryPlaySound() {
           sound.currentTime = 0;
           sound.play().then(() => {
