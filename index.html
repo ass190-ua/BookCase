@@ -300,7 +300,7 @@
             <img src="logo.png" alt="Logo BookCase">
         </div>
         </div>
-        <audio id="bookSound" src="book-flip.mp3" preload="auto" autoplay muted></audio>
+        <audio id="bookSound" src="book-flip.mp3" preload="auto"></audio>
         <button id="playButton" style="display: none;">Play</button>
     </div>
   
@@ -406,41 +406,34 @@
   
     <!-- SCRIPTS -->
     <script>
-      AOS.init({ once: true });
-  
-      function toggleTheme() {
-        const body = document.body;
-        body.classList.toggle('dark-mode');
-        const isDark = body.classList.contains('dark-mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        document.getElementById('themeToggle').textContent = isDark ? '🌞' : '🌙';
-      }
-  
-      window.addEventListener("DOMContentLoaded", () => {
         const sound = document.getElementById("bookSound");
         const playButton = document.getElementById("playButton");
-
+      
         function tryPlaySound() {
-        sound.currentTime = 0;
-        sound.play().then(() => {
-            console.log("🔊 Sonido desbloqueado");
+          sound.currentTime = 0;
+          sound.play().then(() => {
+            console.log("🔊 Sonido reproducido correctamente");
             playButton.remove(); // eliminamos el botón invisible
             document.removeEventListener("click", tryPlaySound);
             document.removeEventListener("touchstart", tryPlaySound);
-        }).catch(err => {
-            console.warn("❌ El navegador bloqueó el sonido.");
-        });
+          }).catch(err => {
+            console.warn("❌ Sonido bloqueado por el navegador:", err);
+          });
         }
-
-        // Activamos el sonido en el primer click o toque
-        document.addEventListener("click", tryPlaySound);
-        document.addEventListener("touchstart", tryPlaySound);
-
-        // Animación del loader más larga
-        setTimeout(() => {
-        document.getElementById("loader").style.opacity = "0";
-        document.getElementById("loader").style.pointerEvents = "none";
-        }, 4000);
-     });
-    </script>
+      
+        // 🔊 Desbloquear sonido al primer clic o toque real
+        document.addEventListener("click", tryPlaySound, { once: true });
+        document.addEventListener("touchstart", tryPlaySound, { once: true });
+      
+        // 🎬 Animación del libro y ocultar loader
+        window.addEventListener("DOMContentLoaded", () => {
+          setTimeout(() => {
+            document.getElementById("loader").style.opacity = "0";
+            document.getElementById("loader").style.pointerEvents = "none";
+      
+            // AOS animaciones (activar justo al mostrar contenido)
+            AOS.init({ once: true });
+          }, 4000);
+        });
+      </script>      
   </body>  
