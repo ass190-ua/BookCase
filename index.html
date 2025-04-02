@@ -1,42 +1,163 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BookCase</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookCase - Compraventa de Libros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #8e2de2, #4a00e0);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
       color: white;
+      padding: 60px 20px;
       text-align: center;
-      padding: 50px;
     }
-    h1 {
-      font-size: 3em;
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
-    p {
-      font-size: 1.5em;
-      margin-bottom: 40px;
+    header p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
     }
-    a.button {
+    .cta-button {
       background: white;
-      color: #4a00e0;
+      color: #2575fc;
       padding: 15px 30px;
-      border-radius: 8px;
-      text-decoration: none;
+      border: none;
+      border-radius: 30px;
       font-weight: bold;
-      transition: background 0.3s;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
     }
-    a.button:hover {
-      background: #ddd;
+    .cta-button:hover {
+      background: #e6e6e6;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .card {
+      background: #f7f7f7;
+      padding: 30px;
+      border-radius: 16px;
+      width: 300px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      color: #2575fc;
+    }
+    footer {
+      background: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    img.banner {
+      max-width: 100%;
+      border-radius: 20px;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>Bienvenido a BookCase</h1>
-  <p>Tu plataforma para organizar, comprar y vender libros de forma inteligente.</p>
-  <a class="button" href="#contacto">¡Empieza ahora!</a>
+  <header data-aos="fade-up">
+    <h1>Bienvenido a BookCase</h1>
+    <p>La nueva forma de comprar y vender libros de segunda mano, centrada en la simplicidad, la edición que buscas, y la mejor experiencia lectora.</p>
+    <button class="cta-button" onclick="window.location='#descubre'">Descubre cómo</button>
+    <img class="banner" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1000&q=80" alt="Libros vintage sobre una estantería">
+  </header>
+
+  <section id="descubre">
+    <h2 class="section-title" data-aos="fade-up">¿Qué es BookCase?</h2>
+    <p data-aos="fade-up" data-aos-delay="100">
+      BookCase es una plataforma de compraventa de libros de segunda mano que permite a cualquier persona encontrar justo la edición que busca. En vez de buscar entre decenas de publicaciones, exploras directamente por ediciones (tapa dura, blanda, especial...).
+    </p>
+  </section>
+
+  <section>
+    <h2 class="section-title" data-aos="fade-up">Para lectores, libreros y coleccionistas</h2>
+    <div class="cards">
+      <div class="card" data-aos="zoom-in">
+        <h3>Vendedores</h3>
+        <p>Publica tus libros en segundos. Gana espacio en casa y algo de dinero extra.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="100">
+        <h3>Compradores</h3>
+        <p>Encuentra esa edición especial o ahorra en libros de segunda mano bien conservados.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <h3>Librerías de barrio</h3>
+        <p>Digitaliza tu estantería y llega a más lectores sin necesidad de web propia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title" data-aos="fade-up">¿Por qué no usar otras plataformas?</h2>
+    <div class="cards">
+      <div class="card" data-aos="flip-left">
+        <h3>Wallapop / eBay</h3>
+        <p>Mucho ruido, muchas publicaciones, difícil comparar lo que realmente buscas.</p>
+      </div>
+      <div class="card" data-aos="flip-left" data-aos-delay="100">
+        <h3>Amazon</h3>
+        <p>No vende libros usados, y mucho menos ediciones específicas de segunda mano.</p>
+      </div>
+      <div class="card" data-aos="flip-left" data-aos-delay="200">
+        <h3>BookCase</h3>
+        <p>Busca por edición. Compara precios. Compra o vende fácilmente. Sólo libros.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title" data-aos="fade-up">Empieza con BookCase hoy mismo</h2>
+    <p style="text-align: center" data-aos="fade-up" data-aos-delay="100">
+      Entra a nuestra aplicación (en desarrollo) o contáctanos para participar como tester. 
+    </p>
+    <div style="text-align: center; margin-top: 20px;">
+      <button class="cta-button" onclick="window.location='mailto:bookcase@email.com'">Contáctanos</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BookCase - Proyecto desarrollado para TAES</p>
+  </footer>
+
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
